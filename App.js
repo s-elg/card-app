@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export function App() {
+export default function App() {
   return (
     <View>
       <Text>Hello world!!!</Text>
