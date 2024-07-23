@@ -1,52 +1,57 @@
+import { StyleSheet, Text, View} from 'react-native';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-
-
-/*export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});*/
-
-
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+//view'ları yan yana sıralamak için
 
 export default function App() {
-  function sayHello() {
-    console.log("hello world")
-  }
-  // componentler bir tane component döndürmeli yani return'un içerisinde bir tane ana parent bulunmalı, react'ın bir kuralıdır
   return ( 
-    <View>
-      <View>
-        <Text>Hello world!!!</Text> 
-        <Text>Hello world</Text>
-      </View>
-      {/* buttondaki title ve onPress zounlu proplar, onPress fonskiyon alır */}
-      <Button title='Here press me!' onPress={() => {console.log(sayHello())}} color={'mistyrose'} />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style = {styles.container}>
+      <View style = {styles.box_1} />
+      <View style = {styles.box_2} />
+      <View style = {styles.box_3} />
+      <View style = {styles.box_4} /> 
+    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
-// arrow functionla kurulmuş hali
-// const App = () => {
-//   return ( 
-//     <View>
-//       <View>
-//         <Text>Hello world!!!</Text> 
-//         <Text>Hello world</Text>
-//       </View>
-//     </View>
-//   );
-// }
+//flex: ekranının şu kadarını şu kadar oranla kapla demek için
+
+const styles = StyleSheet.create( {
+  container: {
+    flex: 1, 
+    //bunu koymazsak ekranda hiç bir şey çıkmıyor,
+    //dıştaki birimin değerini ne koyarsan koy, bir şey değişmeyecek
+    //pozitif olmalı
+    flexDirection: 'column',
+    backgroundColor: 'ivory',
+    justifyContent: 'center', //y ekseninde hizzalamak için, kullanmak için flex değerine ihityaç yoktur
+    alignItems: 'center' //x ekseninde hizzalamak için, kullanmak için flex değerine ihityaç yoktur
+  }, 
+
+  box_1: {
+    width: 75,
+    height: 75,
+    backgroundColor: 'lavender',
+  },
+
+  box_2: {
+    width: 75,
+    height: 75,
+    backgroundColor: 'lemonchiffon',
+  },
+
+  box_3: {
+    width: 75,
+    height: 75,
+    backgroundColor: 'lavenderblush',
+  },
+
+  box_4: {
+    width: 75,
+    height: 75,
+    backgroundColor: 'lightsteelblue',
+  },
+})
